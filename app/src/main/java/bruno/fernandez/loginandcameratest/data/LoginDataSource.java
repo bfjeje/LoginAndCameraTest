@@ -12,18 +12,22 @@ public class LoginDataSource {
     public Result<LoggedInUser> login(String username, String password) {
 
         try {
-            // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
-                    new LoggedInUser(
-                            java.util.UUID.randomUUID().toString(),
-                            "Jane Doe");
-            return new Result.Success<>(fakeUser);
+            if(username.equals("foton@foton.com.br") && password.equals("Foton!")){
+                LoggedInUser fakeUser =
+                        new LoggedInUser(
+                                java.util.UUID.randomUUID().toString(),
+                                "Foton!");
+                return new Result.Success<>(fakeUser);
+            }
+            else{
+                return null;
+            }
+
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));
         }
     }
 
-    public void logout() {
-        // TODO: revoke authentication
-    }
+//    public void logout() {
+//    }
 }
